@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Order Confirmed</title></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<main class="page-shell confirmation"><div class="success-icon">✓</div><p class="eyebrow">Order confirmed</p><h1>Thank you, <span th:text="${order.customerName}"></span>!</h1><p>Your order <strong th:text="'#' + ${order.id}"></strong> is being prepared. We will contact you at <span th:text="${order.phone}"></span>.</p><div class="order-summary"><span th:each="item : ${order.items}"><strong th:text="${item.name}"></strong><span th:text="${item.quantity} × ₹" + ${item.price}"></span></span></div><h2>Total: <span th:text="'₹' + ${order.total}"></span></h2><a class="button" th:href="@{/}">Back home</a></main>
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

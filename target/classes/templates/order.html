@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Order Online</title></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<main class="page-shell">
+  <section class="page-heading"><p class="eyebrow">Order online</p><h1>Pick your favourites.</h1><p>Choose a menu item, then complete your delivery or pickup details.</p></section>
+  <div class="menu-layout">
+    <section><h2>Our menu</h2><div class="menu-list" th:each="item : ${menu}"><div><img th:src="${item.imageUrl}" alt=""><div><span th:text="${item.category}"></span><h3 th:text="${item.name}"></h3><p th:text="${item.description}"></p></div><strong th:text="'₹' + ${item.price}"></strong><form th:action="@{/order/add}" method="post"><input type="hidden" name="itemId" th:value="${item.id}"><input type="number" name="quantity" min="1" value="1" aria-label="Quantity"><button class="button button-small" type="submit">Add</button></form></div></div></section>
+    <aside class="cart-panel"><h2>Your order</h2><div th:if="${cart.isEmpty()}"><p class="empty">Your cart is empty.</p></div><div th:each="item : ${cart}"><strong th:text="${item.name}"></strong><span th:text="${item.quantity} + ' × ₹' + ${item.price}"></span></div><hr><h3>Total: <span th:text="'₹' + ${total}"></span></h3><form th:action="@{/order/submit}" method="post">
+      <label>Full name<input required name="customerName"></label><label>Email<input required type="email" name="email"></label><label>Phone<input required type="tel" name="phone"></label>
+      <label>Order type<select name="orderType"><option value="delivery">Delivery</option><option value="pickup">Pickup</option></select></label><label>Notes<textarea name="notes" rows="3" placeholder="Any special requests?"></textarea></label>
+      <button class="button" type="submit">Place order</button>
+    </form></aside>
+  </div>
+ </main>
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

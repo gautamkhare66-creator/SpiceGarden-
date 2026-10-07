@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Reservation Confirmed</title></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<main class="page-shell confirmation"><div class="success-icon">✓</div><p class="eyebrow">Reservation confirmed</p><h1>See you soon, <span th:text="${reservation.customerName}"></span>!</h1><p>Your table for <strong th:text="${reservation.partySize} guests</strong> is reserved on <span th:text="${#temporals.format(reservation.dateTime, 'dd MMMM yyyy, h:mm a')}"></span>.</p><p>Reference: <strong th:text="'#' + ${reservation.id}"></strong></p><a class="button" th:href="@{/}">Back home</a></main>
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

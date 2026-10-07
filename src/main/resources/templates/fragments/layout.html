@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="header" class="site-header">
+        <a class="brand" th:href="@{/}"><span>SG</span><strong>Spice Garden</strong></a>
+        <nav><a th:href="@{/}">Home</a><a th:href="@{/order}">Order Online</a><a th:href="@{/reserve}">Reserve</a></nav>
+        <a class="button button-small" th:href="@{/order}">View Menu</a>
+    </header>
+    <footer th:fragment="footer"><p>© 2026 Spice Garden. Fresh flavours, warm hospitality.</p></footer>
+</body>
+</html>

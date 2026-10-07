@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Spice Garden | Restaurant</title></head>
+<body>
+<div th:replace="~{fragments/layout :: header}"></div>
+<main>
+  <section class="hero">
+    <div class="hero-copy"><p class="eyebrow">A little journey into spice</p><h1>Food that feels<br><em>like home.</em></h1><p>Seasonal ingredients, bold Indian flavours, and a table waiting for you.</p><div><a class="button" th:href="@{/order}">Order now</a><a class="text-link" th:href="@{/reserve}">Book a table →</a></div></div>
+    <div class="hero-image"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85" alt="Warm restaurant dining room"></div>
+  </section>
+  <section class="section"><div class="section-heading"><div><p class="eyebrow">Our menu</p><h2>Made to share.</h2></div><a class="text-link" th:href="@{/order}">Explore full menu →</a></div><div class="dish-grid" th:each="item : ${menu}"><article class="dish-card"><img th:src="${item.imageUrl}" alt=""><div><span th:text="${item.category}"></span><h3 th:text="${item.name}"></h3><p th:text="${item.description}"></p><strong th:text="'₹' + ${item.price}"></strong></div></article></div></section>
+  <section class="cta"><h2>Come hungry.<br>Leave happy.</h2><p>Order online or reserve your table in a few simple steps.</p><div><a class="button-light" th:href="@{/order}">Order online</a><a class="button-outline-light" th:href="@{/reserve}">Reserve a table</a></div></section>
+ </main>
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>
